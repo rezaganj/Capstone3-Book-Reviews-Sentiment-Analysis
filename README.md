@@ -81,28 +81,23 @@ Fifty Shades Freed (Fifty Shades, Book 3)       | 5,657
 Fifty Shades Darker (Fifty Shades, Book 2)      | 5,637
 Safe Haven                                      | 5,474
 
-\
 <br>
 
 <p>In order to interpret the mood and emotions, I used TextBlob which is a python library for Natural Language Processing (NLP). TextBlob uses a pre-defined dictionary classifying negative and positive words. In this process, a text messsage will be represented by bag of words. After assigning individual scores to all the words, final sentiment is calculated by some pooling operation like taking average of all the sentiments. The polarity can vary between -1 and 1, where -1 means a negative sentiment, +1 means a positive sentiment, and 0 means neutral.</p>
 
-\
 <br>
 
-<img align="right" width="400" src="img/polarity_all.png">
+<p>This figure shows the histogram of sentiment polarity for all digital book reviews. As can be seen, the sentiment is mainly distributed around 0.2 which indicates that in general, the reviews have relatively positive sentiments. In other words, users mostly review books in a positive way.</p>
 
-This figure shows the histogram of sentiment polarity for all digital book reviews. As can be seen, the sentiment is mainly distributed around 0.2 which indicates that in general, the reviews have relatively positive sentiments. In other words, users mostly review books in a positive way.
+<img align="center" width="400" src="img/polarity_all.png">
 
 \
 <br>
-
-<img align="right" width="400" src="img/mean_polarity.png">
 
 <p>This bar plot shows the mean sentiment polarity for each rating star. There is a strong correlation between the mean sentiment polarity and the rating star. The mean sentiment polarity increases from around 0 for the 1-star ratings to 0.3 for 5-star ratings.</p>
 
-\
-\
-\
+<img align="center" width="400" src="img/mean_polarity.png">
+
 \
 <br>
 
@@ -113,9 +108,12 @@ This figure shows the histogram of sentiment polarity for all digital book revie
 \
 <br>
 
-<img align="right" width="400" src="img/rating_counts.png">
-
 <p>This figure shows the rating counts from 1 to 5 star. It can be seen that the majority of reviews are rated 4 and 5 stars, meaning that the dataset is heavily imbalanced for classification. For this study, the 1, 2, and 3-star ratings are considered as negative reviews (labeled 0). On the other hand, the 4 and 5-star ratings are considered as positive reviews (labeled 1). One million reviews were randomly sampled from the dataset evenly distributed between the negative and positive reviews. </p>
+
+<img align="center" width="400" src="img/rating_counts.png">
+
+\
+<br>
 
 ## Methodology
 BERT, or Bidirectional Embedding Representations from Transformers, is a new method of pre-training language representations which obtains state-of-the-art results on a wide array of Natural Language Processing (NLP) tasks. BERT is a deeply bidirectional, unsupervised language representation, pre-trained using only a plain text corpus. Context-free models such as word2vec or GloVe generate a single word embedding representation for each word in the vocabulary, where BERT takes into account the context for each occurrence of a given word. For instance, whereas the vector for "bank" will have the same word2vec vector representation for both of its occurrences in the sentences "I arrived at the bank after crossing the river." and "I arrived at the bank after crossing the road.", BERT will provide a contextualized embedding that will be different according to the sentence. In this study, I used DistilBERT model. DistilBERT is a small, fast, cheap and light Transformer model trained by distilling BERT base. It has 40% less parameters than bert-base-uncased, runs 60% faster while preserving over 95% of BERT’s performances as measured on the GLUE language understanding benchmark.
